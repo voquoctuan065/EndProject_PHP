@@ -30,12 +30,15 @@ Route::middleware([
     })->name('dashboard');
 });
 
+//Home Controller
 route::get('/redirect', [HomeController::class, 'redirect']);
 route::get('/', [HomeController::class, 'index']);
 
+// Admin controller
 route::get('/view_category', [AdminController::class, 'view_category']);
 route::post('/add_category', [AdminController::class, 'add_category']);
 route::get('/delete_category/{id}', [AdminController::class, 'delete_category']);
 
 route::get('/view_product', [AdminController::class, 'view_product']);
 route::post('/add_product', [AdminController::class, 'add_product']);
+route::get('/show_product', [AdminController::class, 'show_product']);
