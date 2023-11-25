@@ -16,6 +16,12 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    @if (session()->has('message'))
+                    <div class="alert alert-success">
+                        <button class="close" data-dismiss="alert" aria-hidden="true" type="button">x</button>
+                        {{session()->get('message')}}
+                    </div>
+                    @endif
                     <div>
                         <h2 class="text-center font-weight-bold mb-5">Product information</h2>
                     </div>
@@ -29,7 +35,8 @@
                             <th>Category</th>
                             <th>Discount</th>
                             <th>Image</th>
-                            <th>Action</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
                         </thead>
                         <tbody>
                             @foreach($product as $product)
@@ -39,10 +46,13 @@
                                 <th scope="row">{{$product->price}}</th>
                                 <th scope="row">{{$product->quantity}}</th>
                                 <th scope="row">{{$product->category}}</th>
-                                <th scope="row">{{$product->discount}}</th>
+                                <th scope="row">{{$product->discount}}%</th>
                                 <th scope="row"><img src="product/{{$product->image}}" alt=""></th>
-                                <td colspan="2" class="table-active">
-                                    <a href="{{url('delete_product', $product->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete this ?')">Delete</a>
+                                <td>
+                                    <a href="{{url('delete_product', $product->id)}}" class="btn btn-outline-danger" onclick="return confirm('Are you sure to delete this ?')">Delete</a>
+                                </td>
+                                <td>
+                                    <a href="{{url('update_product', $product->id)}}" class="btn btn-outline-success">Edit</a>
                                 </td>
                             </tr>
                             @endforeach
