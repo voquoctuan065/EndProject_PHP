@@ -29,17 +29,23 @@
         @include('home.header')
         <!-- end header section -->
     </div>
-   
+
     <!-- Start card section -->
     <section class="h-100" style="background-color: #eee;">
         <div class="container h-100 py-5">
+            @if (session()->has('message'))
+            <div class="alert alert-success">
+                <button class="close" data-dismiss="alert" aria-hidden="true" type="button">x</button>
+                {{session()->get('message')}}
+            </div>
+            @endif
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-10">
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
                     </div>
-                    <?php $total_price = 0;?>
+                    <?php $total_price = 0; ?>
                     @foreach($cart as $cart)
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-4">
@@ -55,7 +61,7 @@
                                         <i class="fa fa-minus"></i>
                                     </button>
 
-                                    <input id="form1" min="1" name="quantity" value="{{$cart->quantity}}" type="number" class="form-control form-control-sm" style="width: 80px;"/>
+                                    <input id="form1" min="1" name="quantity" value="{{$cart->quantity}}" type="number" class="form-control form-control-sm" style="width: 80px;" />
 
                                     <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                         <i class="fa fa-plus"></i>
@@ -65,9 +71,7 @@
                                     <h5 class="mb-0">${{$cart->price}}</h5>
                                 </div>
                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                    <a href="{{url('remove_cart', $cart->id)}}" class="text-danger"
-                                    onclick="return confirm('Do you want to remove this item?')"
-                                    >
+                                    <a href="{{url('remove_cart', $cart->id)}}" class="text-danger" onclick="return confirm('Do you want to remove this item?')">
                                         <i class="fa fa-trash fa-lg"></i>
                                     </a>
                                 </div>
@@ -84,7 +88,9 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <button type="button" class="btn btn-outline-danger btn-block btn-lg">Proceed to Pay</button>
+                            <h1>Proceed to Pay</h1>
+                            <a href="{{url('cash_order')}}" class="btn btn-outline-danger btn-block btn-lg" onclick="return confirm('Are you sure to buy?')">Cash on Delivery</a>
+                            <a href="{{url('stripe', $total_price)}}" class="btn btn-outline-warning btn-block btn-lg mt-2">Pay Using Card</a>
                         </div>
                     </div>
 
