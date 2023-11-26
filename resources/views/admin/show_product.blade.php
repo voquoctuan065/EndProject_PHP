@@ -46,7 +46,7 @@
                                 <th scope="row">{{$product->price}}</th>
                                 <th scope="row">{{$product->quantity}}</th>
                                 <th scope="row">{{$product->category}}</th>
-                                <th scope="row">{{$product->discount}}%</th>
+                                <th scope="row">{{$product->discount}}</th>
                                 <th scope="row"><img src="product/{{$product->image}}" alt=""></th>
                                 <td>
                                     <a href="{{url('delete_product', $product->id)}}" class="btn btn-outline-danger" onclick="return confirm('Are you sure to delete this ?')">Delete</a>
