@@ -57,7 +57,7 @@
       <span class="nav-link">Navigation</span>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="{{url('redirect')}}">
         <span class="menu-icon">
           <i class="mdi mdi-speedometer"></i>
         </span>
@@ -92,5 +92,16 @@
       </a>
     </li>
     <!-- End Category -->
+
+    <!-- Order start -->
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="{{url('view_order')}}">
+        <span class="menu-icon">
+          <i class="mdi mdi-playlist-play"></i>
+        </span>
+        <span class="menu-title">Order</span>
+      </a>
+    </li>
+    <!-- End Order -->
   </ul>
 </nav>

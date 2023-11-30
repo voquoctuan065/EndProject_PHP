@@ -64,3 +64,16 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## PDF download in Laravel
+1. composer require barryvdh/laravel-dompdf
+2. In config/app.php
+    'provider'=>[
+        ...
+        Barryvdh\DomPDF\ServiceProvider::class
+    ];
+
+    'aliases' => Facade::defaultAliases()->merge([
+        'PDF'=>Barryvdh\DomPDF\Facade::class,
+    ])->toArray(),

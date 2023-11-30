@@ -9,6 +9,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -16,8 +17,22 @@ class HomeController extends Controller
     public function redirect()
     {
         $user_type = Auth::user()->user_type;
-        if ($user_type == 1)
-            return view('admin.home');
+        if ($user_type == 1) {
+            $total_product = Product::all()->count();
+            $total_order = Order::all()->count();
+            $total_user = User::all()->count();
+
+            $order = Order::all();
+            $total_revenue = 0;
+            foreach($order as $order) {
+                $total_revenue += $order->price;
+            }
+
+            $total_delivered = Order::where('delivery_status', '=', 'delivered')->get()->count();
+            $order_processing = Order::where('delivery_status', '=', 'processing')->get()->count();
+            return view('admin.home', 
+            compact('total_product', 'total_order', 'total_user', 'total_revenue', 'total_delivered', 'order_processing'));
+        }
         else {
             $product = Product::all();
             return view('home.userpage', compact('product'));
@@ -161,6 +176,25 @@ class HomeController extends Controller
         }
               
         return redirect('show_cart')->with('message', 'Payment successful!');
+    }
+
+    public function show_order() {
+        if(Auth::id()) {
+            $user = Auth::user();
+            $user_id = $user->id;
+            $order = Order::where('user_id', '=', $user_id)->get();
+            return view('home.order', compact('order'));
+        } else {
+            return redirect('login');
+        }  
+    }
+
+    public function cancel_order($id) {
+        $order = Order::find($id);
+        $order->delivery_status = 'You canceled the order';
+
+        $order->save();
+        return redirect()->back();
     }
 }
 
