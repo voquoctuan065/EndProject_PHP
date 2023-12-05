@@ -29,46 +29,21 @@
       @include('home.header')
       <!-- end header section -->
       <!-- slider section -->
-      @include('home.slider')
+      <!-- @include('home.slider') -->
       <!-- end slider section -->
    </div>
    <!-- why section -->
-   @include('home.why')
+   <!-- @include('home.why') -->
    <!-- end why section -->
 
    <!-- arrival section -->
-   @include('home.arrival')
+   <!-- @include('home.arrival') -->
    <!-- end arrival section -->
 
    <!-- product section -->
    @include('home.product')
    <!-- end product section -->
 
-   <!-- Comment section -->
-   <section class="container">
-      <div class="py-3">
-         <div class="mb-4">
-            <h1 class="font-weight-bold text-center mb-2" style="font-size: 24px;">Comment</h1>
-            <form action="">
-               <textarea name="" id="" cols="30" rows="5" placeholder="Put your comment..." class='form-control'></textarea>
-               <input type="submit" value="comment" class="btn btn-dark">
-            </form>
-         </div>
-         <div>
-            <h1 class="font-weight-bold mb-2" style="font-size: 18px;">All comment</h1>
-            <div>
-               <b>Vo Quoc Tuan</b>
-               <p>This is my comment</p>
-               <a href="javascript::void(0);">Reply</a>
-            </div>
-            <div>
-                  <textarea placeholder="Write something here..." style="height: 100px; width: 500px;" class="form-control"></textarea>
-                  <br>
-                  <a href="" class="btn btn-primary">Reply</a>
-            </div>
-         </div>
-      </div>
-   </section>
    <!-- subscribe section -->
    <section class="subscribe_section">
       <div class="container-fuild">

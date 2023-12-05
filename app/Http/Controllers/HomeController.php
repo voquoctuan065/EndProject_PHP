@@ -196,5 +196,13 @@ class HomeController extends Controller
         $order->save();
         return redirect()->back();
     }
+
+    public function product_search(Request $request) {
+        $search_txt = $request->search;
+        $product = Product::where('title', 'LIKE', '%'.$search_txt.'%')->orWhere('category',
+         'LIKE', '%'.$search_txt.'%')->get();
+
+        return view('home.userpage', compact('product'));
+    }
 }
 

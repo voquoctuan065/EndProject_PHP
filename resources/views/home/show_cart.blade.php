@@ -82,7 +82,7 @@
                     @endforeach
                     <div class="card mb-4">
                         <div class="card-body p-4 d-flex flex-row">
-                            Total Price: {{$total_price}}
+                            Total Price: ${{$total_price}}
                         </div>
                     </div>
 

@@ -1,4 +1,4 @@
-<section class="product_section layout_padding">
+<section class="product_section layout_padding" id="product">
          <div class="container">
             <div class="heading_container heading_center">
                <h2>

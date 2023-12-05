@@ -53,6 +53,8 @@ Route::post('stripe/{total_price}', [HomeController::class, 'stripePost'])->name
 route::get('/show_order', [HomeController::class, 'show_order']);
 // Cancel order
 route::get('/cancel_order/{id}', [HomeController::class, 'cancel_order']);
+// Search product
+route::post('/product_search', [HomeController::class, 'product_search']);
 
 //--------------------------------------- Admin Controller -----------------------------------------------------//
 
